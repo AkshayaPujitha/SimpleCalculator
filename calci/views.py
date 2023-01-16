@@ -24,15 +24,18 @@ def operation(l,l3):
     if l[0]=="+" or l[0]=="-" or l[0]=="*" or l[0]=="/":
         i=1
         u=len(ans)
-        sum=ans[u-1]
+        sum=""
+        l2=[]
+        l2.append(ans[u-1])
         m=l[0]
     else:
         i=0
         sum=0
         m=0
+        l2=[]
     length=len(l)
     num=""
-    l2=[]
+    
    
     while i<length:
         if operand(l[i]):
@@ -48,7 +51,7 @@ def operation(l,l3):
                 if m=="+":
                     sum=(int(num))+(int(l2[0]))
                 if m=="-":
-                    sum=(int(num))+(int(l2[0]))
+                    sum=-(int(num))+(int(l2[0]))
                 if m=="*":
                     sum=(int(num))*(int(l2[0]))
                 if m=="/":
@@ -65,7 +68,7 @@ def operation(l,l3):
         if m=="+":
             sum=(int(num))+(int(l2[0]))
         if m=="-":
-            sum=(int(num))-(int(l2[0]))
+            sum=-(int(num))+(int(l2[0]))
         if m=="*":
             sum=(int(num))*(int(l2[0]))
         if m=="/":
@@ -84,14 +87,20 @@ def operation(l,l3):
 
     
             
-    print(sum,l)
+    #print(sum,l)
     for i in range(0,length):
         l.remove(l[0])
     ans.append(sum)
     return sum
 
 def text(l2):
-    sum=""
+    if l2[0]=="+" or l2[0]=="-" or l2[0]=="*" or l2[0]=="/":
+        sum=""
+        u=len(ans)
+        l2.insert(0,str(ans[u-1]))
+        print(l2)
+    else:
+        sum=""
     length=len(l2)
     for i in l2:
         sum=sum+i
@@ -117,6 +126,7 @@ def calc(request):
             sum=operation(l,l2)
             print(sum,l2)
             return render(request,'home.html',{'sum':sum})
+        i=len(l)
         sum=text(l2)
         return render(request,'home.html',{'sum':sum})
         
