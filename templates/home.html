@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    table {
+        border: 1px solid black;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 20px 40px;
+        background-color: green;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="text"] {
+        padding: 20px 30px;
+        font-size: 24px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        border: 2px solid black;
+       
+    }
+</style>
+<body>
+    <body>
+        <table id="calcu">
+            <tr>
+                <td colspan="3">{{sum}}</td>
+                <!-- clr() function will call clr to clear all value -->
+            <form method='POST' action="home">
+                {% csrf_token %}
+                <td><input type="submit" value="c"> </td>
+            </tr>
+            <tr>
+                <!-- create"submit and assign value to each"submit -->
+                <!-- dis("1") will call function dis to display value -->
+                <td><input type="submit" value="1" name="num" > </td>
+                <td><input type="submit" value="2" name="num"> </td>
+                <td><input type="submit" value="3"
+                    name="num"        > </td>
+                <td><input type="submit" value="/" onclick="dis('/')" 
+                    name="num"      > </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="4" 
+                    name="num"       > </td>
+                <td><input type="submit" value="5" 
+                    name="num"      > </td>
+                <td><input type="submit" value="6" 
+                    name="num"      > </td>
+                <td><input type="submit" value="*"  name="num"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="7" 
+                    name="num"      > </td>
+                <td><input type="submit" value="8" 
+                    name="num"       > </td>
+                <td><input type="submit" value="9" 
+                    name="num"       > </td>
+                <td><input type="submit" value="-" 
+                    name="num"       > </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="0"  
+                    name="num"       > </td>
+                <td><input type="submit" value="." 
+                    name="num"       > </td>
+                <!-- solve function call function solve to evaluate value -->
+                <td><input type="submit" value="=" name="num" > </td>
+      
+                <td><input type="submit" value="+"
+                    name="num"          > </td>
+            </tr>
+        </form>
+        </table>
+</body>
+</html>
