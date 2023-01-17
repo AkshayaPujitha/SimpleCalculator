@@ -26,6 +26,7 @@ def operation(l,l3):
         u=len(ans)
         sum=""
         l2=[]
+        print(ans[u-1])
         l2.append(ans[u-1])
         m=l[0]
     else:
@@ -55,7 +56,7 @@ def operation(l,l3):
                 if m=="*":
                     sum=(int(num))*(int(l2[0]))
                 if m=="/":
-                    sum=(int(num))/(int(l2[0]))
+                    sum=(int(l2[0]))/(int(num))
 
                 l2=[]
                 l2.append(sum)
@@ -72,7 +73,7 @@ def operation(l,l3):
         if m=="*":
             sum=(int(num))*(int(l2[0]))
         if m=="/":
-            sum=(int(num))/(int(l2[0]))
+            sum=(int(l2[0]))/(int(num))
 
         
     else:
