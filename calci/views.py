@@ -50,13 +50,13 @@ def operation(l,l3):
                 i=i+1
             else:
                 if m=="+":
-                    sum=(int(num))+(int(l2[0]))
+                    sum=(float(num))+(float(l2[0]))
                 if m=="-":
-                    sum=-(int(num))+(int(l2[0]))
+                    sum=-(float(num))+(float(l2[0]))
                 if m=="*":
-                    sum=(int(num))*(int(l2[0]))
+                    sum=(float(num))*(float(l2[0]))
                 if m=="/":
-                    sum=(int(l2[0]))/(int(num))
+                    sum=(float(l2[0]))/(float(num))
 
                 l2=[]
                 l2.append(sum)
@@ -67,24 +67,24 @@ def operation(l,l3):
     print(sum,num,l2,m)
     if l2!=[]:
         if m=="+":
-            sum=(int(num))+(int(l2[0]))
+            sum=(float(num))+(float(l2[0]))
         if m=="-":
-            sum=-(int(num))+(int(l2[0]))
+            sum=-(float(num))+(float(l2[0]))
         if m=="*":
-            sum=(int(num))*(int(l2[0]))
+            sum=(float(num))*(float(l2[0]))
         if m=="/":
-            sum=(int(l2[0]))/(int(num))
+            sum=(float(l2[0]))/(float(num))
 
         
     else:
         if m=="+":
-            sum=sum+(int(num))
+            sum=sum+(float(num))
         if m=="-":
-            sum=sum-(int(num))
+            sum=sum-(float(num))
         if m=="*":
-            sum=sum*int(num)
+            sum=sum*float(num)
         if m=="/":
-            sum=sum/int(num)
+            sum=sum/float(num)
 
     
             
@@ -114,9 +114,20 @@ def text(l2):
 def calc(request):
     if request.method=='POST':
         a=request.POST.get('num')
-        
         print(a)
-        if operand(a):
+        if a=="c":
+            le=len(l2)
+            le1=len(l)
+            while le>0:
+                m=l2[0]
+                l2.remove(m)
+                le-=1
+            while le1>0:
+                m=l[0]
+                l.remove(m)
+                le1-=1
+
+        elif operand(a):
             l2.append(a)
             l.append(a)
         elif operator(a):
@@ -128,7 +139,10 @@ def calc(request):
             print(sum,l2)
             return render(request,'home.html',{'sum':sum})
         i=len(l)
-        sum=text(l2)
+        if len(l2)!=0:
+            sum=text(l2)
+        else:
+            sum=" "
         return render(request,'home.html',{'sum':sum})
         
 
