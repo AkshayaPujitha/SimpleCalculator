@@ -4,7 +4,7 @@ from django.http import HttpResponse
 def home(request):
     return render(request,'home.html')
 def operand(a):
-    l=['1','2','3','4','5','6','7','8','9']
+    l=['0','1','2','3','4','5','6','7','8','9']
     if a in l:
         return 1
     else:
