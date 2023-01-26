@@ -20,6 +20,7 @@ l=[]
 l2=[]
 ans=[]
 def operation(l,l3):
+    print(l3)
     l3.pop(0)
     if l[0]=="+" or l[0]=="-" or l[0]=="*" or l[0]=="/":
         i=1
@@ -39,7 +40,13 @@ def operation(l,l3):
     
    
     while i<length:
-        if operand(l[i]):
+        if l[i]==".":
+            print(l)
+            print(num)
+            num=str(int(num)+(int(l[i+1])/10))
+            print(num)
+            i=i+2
+        elif operand(l[i]):
             num=num+l[i]
             i=i+1
         else:
@@ -50,6 +57,7 @@ def operation(l,l3):
                 i=i+1
             else:
                 if m=="+":
+                    
                     sum=(float(num))+(float(l2[0]))
                 if m=="-":
                     sum=-(float(num))+(float(l2[0]))
@@ -64,7 +72,7 @@ def operation(l,l3):
                 
                 m=l[i]
                 i=i+1
-    print(sum,num,l2,m)
+    #print(sum,num,l2,m)
     if l2!=[]:
         if m=="+":
             sum=(float(num))+(float(l2[0]))
@@ -108,7 +116,7 @@ def text(l2):
     for i in range(0,length):
         l2.remove(l2[0])
     l2.append(sum)
-    print(l2)
+    #print(l2)
     return sum
 
 def calc(request):
@@ -126,7 +134,9 @@ def calc(request):
                 m=l[0]
                 l.remove(m)
                 le1-=1
-
+        if a==".":
+            l.append(a)
+            l2.append(a)
         elif operand(a):
             l2.append(a)
             l.append(a)
@@ -134,9 +144,9 @@ def calc(request):
             l2.append(a)
             l.append(a)
         elif a=='=':
-            print(l)
+            #print(l)
             sum=operation(l,l2)
-            print(sum,l2)
+            #print(sum,l2)
             return render(request,'home.html',{'sum':sum})
         i=len(l)
         if len(l2)!=0:
