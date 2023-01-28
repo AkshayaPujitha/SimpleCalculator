@@ -21,7 +21,10 @@ l2=[]
 ans=[]
 def operation(l,l3):
     print(l3)
-    l3.pop(0)
+    try:
+        l3.pop(0)
+    except:
+        return "#"
     if l[0]=="+" or l[0]=="-" or l[0]=="*" or l[0]=="/":
         i=1
         u=len(ans)
@@ -57,14 +60,25 @@ def operation(l,l3):
                 i=i+1
             else:
                 if m=="+":
-                    
-                    sum=(float(num))+(float(l2[0]))
+                    try:
+                        sum=(float(num))+(float(l2[0]))
+                    except:
+                        return "#"
                 if m=="-":
-                    sum=-(float(num))+(float(l2[0]))
+                    try:
+                        sum=-(float(num))+(float(l2[0]))
+                    except:
+                        return "#"
                 if m=="*":
-                    sum=(float(num))*(float(l2[0]))
+                    try:
+                        sum=(float(num))*(float(l2[0]))
+                    except:
+                        return "#"
                 if m=="/":
-                    sum=(float(l2[0]))/(float(num))
+                    try:
+                        sum=(float(l2[0]))/(float(num))
+                    except:
+                        return "#"
 
                 l2=[]
                 l2.append(sum)
@@ -75,13 +89,25 @@ def operation(l,l3):
     #print(sum,num,l2,m)
     if l2!=[]:
         if m=="+":
-            sum=(float(num))+(float(l2[0]))
+            try:
+                sum=(float(num))+(float(l2[0]))
+            except:
+                return "#"
         if m=="-":
-            sum=-(float(num))+(float(l2[0]))
+            try:
+                sum=-(float(num))+(float(l2[0]))
+            except:
+                return "#"
         if m=="*":
-            sum=(float(num))*(float(l2[0]))
+            try:
+                sum=(float(num))*(float(l2[0]))
+            except:
+                return "#"
         if m=="/":
-            sum=(float(l2[0]))/(float(num))
+            try:
+                sum=(float(l2[0]))/(float(num))
+            except:
+                return "#"
 
         
     else:
@@ -147,6 +173,8 @@ def calc(request):
             #print(l)
             sum=operation(l,l2)
             #print(sum,l2)
+            if sum=="#":
+                return render(request,'home.html',{'sum':""})
             return render(request,'home.html',{'sum':sum})
         i=len(l)
         if len(l2)!=0:
